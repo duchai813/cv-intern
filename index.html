@@ -31,7 +31,30 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             overflow: hidden;
         }
+.avatar-box {
+    flex: 0 0 auto;
+    margin-right: 24px;
+}
 
+.avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e5e7eb;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .avatar-box {
+        margin-right: 0;
+        margin-bottom: 12px;
+    }
+    .cv-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
         .cv-header {
             display: flex;
             flex-wrap: wrap;
@@ -222,23 +245,29 @@
 
 <div class="cv-wrapper">
     <!-- PHẦN ĐẦU CV -->
-    <header class="cv-header">
-        <div class="cv-header-left">
+  <header class="cv-header">
+    <div class="avatar-box">
+        <img src="anhcv.jpg" alt="Tran Duc Hai" class="avatar">
+    </div>
+
+    <div class="cv-header-left">
             <div class="name">Trần Đức Hải</div>
-            <div class="position">IT Intern / Backend Intern</div>
-            <p class="tagline">
-                Sinh viên Công nghệ Thông tin với nền tảng Java, Spring Boot và SQL.
-                Mong muốn thực tập Backend để học hỏi quy trình phát triển phần mềm thực tế
-                và đóng góp vào các dự án web.
-            </p>
-        </div>
-        <div class="cv-header-right">
-            <div class="contact-item"><span>📞</span> 0766128057</div>
-            <div class="contact-item"><span>✉️</span> duchai.40net@gmail.com</div>
-            <div class="contact-item"><span>🌐</span> https://github.com/duchai813</div>
-            <div class="contact-item"><span>📍</span> Hà Nội, Việt Nam</div>
-        </div>
-    </header>
+        <div class="position">IT Intern / Backend Intern</div>
+        <p class="tagline">
+            Sinh viên Công nghệ Thông tin với nền tảng Java, Spring Boot và SQL.
+            Mong muốn thực tập Backend để học hỏi quy trình phát triển phần mềm thực tế
+            và đóng góp vào các dự án web.
+        </p>
+    </div>
+
+    <div class="cv-header-right">
+        <div class="contact-item"><span>📞</span> 09xx xxx xxx</div>
+        <div class="contact-item"><span>✉️</span> nguyenvana@example.com</div>
+        <div class="contact-item"><span>🌐</span> github.com/username</div>
+        <div class="contact-item"><span>📍</span> Hà Nội, Việt Nam</div>
+    </div>
+</header>
+
 
     <!-- THÂN CV -->
     <div class="cv-body">
@@ -432,3 +461,4 @@
 
 </body>
 </html>
+
