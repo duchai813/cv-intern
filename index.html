@@ -1,429 +1,371 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <title>CV IT Intern</title>
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+  <title>Harvard CV - Trần Đức Hải</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root{
+      --text:#111;
+      --muted:#555;
+      --line:#d9d9d9;
+      --bg:#f3f4f6;
+      --paper:#fff;
+    }
 
+    *{ box-sizing:border-box; }
     body{
-      font-family:"Inter",sans-serif;
-      background:#f1f3f6;
-      color:#222;
-      line-height:1.6;
-      padding:20px;
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font: 14px/1.55 "Times New Roman", Times, serif; /* Harvard-like */
     }
 
-    .cv-wrapper{
-      max-width:1000px;
-      margin:0 auto;
-      background:#fff;
-      border-radius:12px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.08);
-      overflow:hidden;
+    .page{
+      max-width: 900px;
+      margin: 24px auto;
+      background:var(--paper);
+      padding: 28px 34px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
     }
 
-    .cv-header{
+    /* Header */
+    .header{
       display:flex;
-      flex-wrap:wrap;
-      padding:24px 32px;
-      background:linear-gradient(135deg,#1f2937,#111827);
-      color:#fff;
-      gap: 0;
-      align-items: center;
+      gap:18px;
+      align-items:flex-start;
+      justify-content:space-between;
     }
-
-    .avatar-box{ flex:0 0 auto; margin-right:24px; }
-    .avatar{
-      width:110px; height:110px;
-      border-radius:50%;
-      object-fit:cover;
-      border:3px solid #e5e7eb;
-      background: #111827;
-    }
-
-    .cv-header-left{ flex:1 1 260px; }
-    .cv-header-right{
-      flex:1 1 220px;
-      text-align:right;
-      font-size:14px;
-    }
-
+    .header-left{ flex: 1; min-width: 320px; }
     .name{
-      font-size:30px;
-      font-weight:700;
-      letter-spacing:1px;
-      margin-bottom:4px;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      margin: 0 0 6px 0;
+    }
+    .title{
+      margin:0 0 10px 0;
+      color:var(--muted);
+      font-size: 13.5px;
+      font-weight: 700;
+    }
+    .summary{
+      margin:0;
+      color:var(--text);
     }
 
-    .position{
-      font-size:16px;
-      font-weight:500;
-      color:#9ca3af;
-      margin-bottom:12px;
+    .header-right{
+      flex: 0 0 290px;
+      text-align:right;
+    }
+    .contact{
+      margin:0;
+      color:var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .contact a{ color:inherit; text-decoration:none; }
+    .contact a:hover{ text-decoration:underline; }
+
+    .hr{
+      border:0;
+      border-top:1px solid var(--line);
+      margin: 14px 0 18px;
     }
 
-    .tagline{
-      font-size:14px;
-      color:#e5e7eb;
-      max-width: 620px;
+    /* Sections */
+    section{ margin: 0 0 16px 0; }
+    h2{
+      font-size: 13.5px;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      margin: 0 0 8px 0;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 4px;
     }
 
-    .contact-item{ margin-bottom:4px; }
-    .contact-item span{ font-weight:600; }
+    ul{ margin: 6px 0 0 18px; padding:0; }
+    li{ margin: 2px 0; }
 
-    .cv-body{
+    /* Tables */
+    .cv-table{
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .cv-table th, .cv-table td{
+      border: 1px solid var(--line);
+      padding: 10px;
+      vertical-align: top;
+    }
+    .cv-table th{
+      background:#fafafa;
+      text-transform: uppercase;
+      font-size: 12.5px;
+      letter-spacing: .4px;
+    }
+    .row-title{ font-weight:700; }
+    .row-meta{ color:var(--muted); font-size: 13px; margin-top: 2px; }
+    .tags{ margin-top:6px; color:var(--muted); font-size:12.5px; }
+
+    /* Small helpers */
+    .two-col{
       display:grid;
-      grid-template-columns:1.1fr 0.9fr;
-      gap:24px;
-      padding:24px 32px 32px;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .pill{
+      display:inline-block;
+      border:1px solid var(--line);
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin: 4px 6px 0 0;
+      font-size: 12.5px;
+      color: var(--muted);
+      background:#fff;
     }
 
-    .section{ margin-bottom:20px; }
-
-    .section-title{
-      font-size:16px;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:1px;
-      margin-bottom:10px;
-      color:#111827;
-      border-bottom:2px solid #e5e7eb;
-      padding-bottom:4px;
-    }
-
-    .section-title span{
-      border-bottom:2px solid #111827;
-      padding-bottom:4px;
-    }
-
-    .experience-item,
-    .project-item,
-    .edu-item{ margin-bottom:14px; }
-
-    .item-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:baseline;
-      font-size:14px;
-      gap: 12px;
-    }
-
-    .item-title{ font-weight:600; }
-    .item-time{ font-size:12px; color:#6b7280; white-space: nowrap; }
-
-    .item-sub{
-      font-size:13px;
-      color:#4b5563;
-      margin-bottom:4px;
-    }
-
-    ul{
-      padding-left:18px;
-      font-size:13px;
-      color:#374151;
-    }
-
-    ul li{ margin-bottom:4px; }
-
-    .chip-list{
-      display:flex;
-      flex-wrap:wrap;
-      gap:6px;
-      margin-top:6px;
-    }
-
-    .chip{
-      font-size:12px;
-      padding:4px 8px;
-      border-radius:999px;
-      background:#e5e7eb;
-    }
-
-    .chip.highlight{
-      background:#1d4ed8;
-      color:#fff;
-    }
-
-    .skill-group{ margin-bottom:10px; }
-    .skill-title{
-      font-weight:600;
-      font-size:13px;
-      margin-bottom:4px;
-    }
-
-    .skill-tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:6px;
-    }
-
-    .skill-tag{
-      font-size:12px;
-      padding:4px 8px;
-      border-radius:999px;
-      background:#f3f4f6;
-      border:1px solid #e5e7eb;
-    }
-
-    .lang-row{
-      display:flex;
-      justify-content:space-between;
-      font-size:13px;
-      margin-bottom:4px;
-      gap: 12px;
-    }
-
-    .soft-list li{
-      list-style:none;
-      position:relative;
-      padding-left:14px;
-    }
-
-    .soft-list li::before{
-      content:"•";
-      position:absolute;
-      left:0;
-      color:#4b5563;
-    }
-
-    a{ color:#1d4ed8; text-decoration:none; }
-    a:hover{ text-decoration:underline; }
-
-    /* Mobile */
-    @media (max-width:768px){
-      .avatar-box{ margin-right:0; margin-bottom:12px; }
-      .cv-header{ flex-direction:column; align-items:flex-start; }
-      .cv-header-right{ text-align:left; margin-top:12px; }
-      .cv-body{ grid-template-columns:1fr; padding:20px 18px 24px; }
-    }
-
-    /* Print (PDF) */
+    /* Print */
     @media print{
-      body{ background:#fff; padding:0; }
-      .cv-wrapper{ box-shadow:none; border-radius:0; }
-      a{ color:#111827; text-decoration:none; }
+      body{ background:#fff; }
+      .page{
+        box-shadow:none;
+        margin:0;
+        max-width:none;
+        padding: 18mm 16mm;
+      }
+      a{ color:inherit; text-decoration:none; }
     }
   </style>
 </head>
 
 <body>
-  <div class="cv-wrapper">
-    <!-- HEADER -->
-    <header class="cv-header">
-      <div class="avatar-box">
-        <img src="anhcv.jpg" alt="Tran Duc Hai" class="avatar">
-      </div>
+  <main class="page">
 
-      <div class="cv-header-left">
-        <div class="name">Trần Đức Hải</div>
-        <div class="position">IT Intern / Backend Intern (Java)</div>
-        <p class="tagline">
-          Backend Intern với nền tảng Java, Spring Boot và SQL.
-          Mong muốn được tham gia dự án thực tế để xây dựng RESTful API, làm việc với database
-          và phát triển thành Backend Developer chuyên nghiệp.
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-left">
+        <h1 class="name">Trần Đức Hải</h1>
+        <p class="title">IT Intern / Backend Intern (Java)</p>
+        <p class="summary">
+          Backend Intern với nền tảng Java, Spring Boot và SQL. Mong muốn tham gia dự án thực tế để xây dựng RESTful API,
+          làm việc với database và phát triển thành Backend Developer chuyên nghiệp.
         </p>
       </div>
 
-      <div class="cv-header-right">
-        <div class="contact-item"><span>🎂</span> 08/10/2003</div>
-        <div class="contact-item"><span>📞</span> 0766128057</div>
-        <div class="contact-item"><span>✉️</span> duchai.40net@gmail.com</div>
-        <div class="contact-item"><span>🎓</span> FPT Polytechnic (CNTT)</div>
-        <div class="contact-item"><span>🌐</span> <a href="https://github.com/duchai813" target="_blank" rel="noopener">github.com/duchai813</a></div>
-        <div class="contact-item"><span>📍</span> Hà Nội, Việt Nam</div>
+      <div class="header-right">
+        <p class="contact">
+          08/10/2003<br/>
+          0766128057<br/>
+          <a href="mailto:duchai_40net@gmail.com">duchai_40net@gmail.com</a><br/>
+          FPT Polytechnic (CNTT)<br/>
+          <a href="https://github.com/duchai813" target="_blank" rel="noreferrer">github.com/duchai813</a><br/>
+          Hà Nội, Việt Nam
+        </p>
       </div>
     </header>
 
-    <!-- BODY -->
-    <div class="cv-body">
-      <!-- LEFT COLUMN -->
-      <main>
-        <!-- TECHNICAL SUMMARY (ATS-friendly) -->
-        <section class="section">
-          <h2 class="section-title"><span>Technical Summary</span></h2>
-          <p style="font-size:13px; color:#374151;">
-            Java, Spring Boot, RESTful API, MVC Architecture, SQL, MySQL, Hibernate/JPA,
-            Git, Postman, Backend Development, Web Application.
-          </p>
-        </section>
+    <hr class="hr" />
 
-        <!-- CAREER OBJECTIVE -->
-        <section class="section">
-          <h2 class="section-title"><span>Career Objective</span></h2>
-          <p style="font-size:13px; color:#374151;">
-            Mục tiêu ngắn hạn: Hoàn thành kỳ thực tập Backend Developer, nắm vững quy trình dự án thực tế
-            (phân tích yêu cầu, code, review, test, deploy).
-            Mục tiêu dài hạn: Trở thành Backend Developer có khả năng thiết kế API hiệu quả,
-            tối ưu database và đóng góp vào kiến trúc hệ thống.
-          </p>
-        </section>
+    <!-- TECHNICAL SUMMARY -->
+    <section>
+      <h2>Technical Summary</h2>
+      <p style="margin:0;">
+        Java, Spring Boot, RESTful API, MVC Architecture, SQL, MySQL, Hibernate/JPA, Git, Postman, Backend Development, Web Application.
+      </p>
+    </section>
 
-        <!-- EXPERIENCE -->
-        <section class="section">
-          <h2 class="section-title"><span>Experience</span></h2>
+    <!-- CAREER OBJECTIVE -->
+    <section>
+      <h2>Career Objective</h2>
+      <ul>
+        <li><b>Mục tiêu ngắn hạn:</b> Hoàn thành kỳ thực tập Backend Developer, nắm vững quy trình dự án (phân tích yêu cầu, code, review, test, deploy).</li>
+        <li><b>Mục tiêu dài hạn:</b> Trở thành Backend Developer có khả năng thiết kế API hiệu quả, tối ưu database và đóng góp vào kiến trúc hệ thống.</li>
+      </ul>
+    </section>
 
-          <div class="experience-item">
-            <div class="item-header">
-              <div class="item-title">Cộng tác viên IT – Xưởng IT FPT</div>
-              <div class="item-time">2024 – 2025</div>
-            </div>
-            <div class="item-sub">Hỗ trợ kỹ thuật cho sự kiện và website CLB</div>
-            <ul>
-              <li>Tham gia chỉnh sửa và tối ưu giao diện website CLB bằng HTML, CSS, Bootstrap.</li>
-              <li>Hỗ trợ triển khai và bảo trì các tính năng cơ bản cho website nội bộ.</li>
-              <li>Tham gia workshop Java, hỗ trợ sinh viên làm quen với Spring Boot và MVC.</li>
-            </ul>
-            <div class="chip-list">
-              <span class="chip highlight">Java</span>
-              <span class="chip highlight">Spring Boot</span>
-              <span class="chip">MVC</span>
-              <span class="chip">MySQL</span>
-              <span class="chip">Git</span>
-            </div>
-          </div>
-        </section>
+    <!-- SKILLS -->
+    <section>
+      <h2>Skills</h2>
+      <table class="cv-table">
+        <thead>
+          <tr>
+            <th style="width:24%;">Nhóm</th>
+            <th>Nội dung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-title">Ngôn ngữ</td>
+            <td>
+              <span class="pill">Java (Core)</span>
+              <span class="pill">SQL (Basic)</span>
+              <span class="pill">JavaScript (Basic)</span>
+              <span class="pill">C</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-title">Framework / Tools</td>
+            <td>
+              <span class="pill">Spring Boot (Basic)</span>
+              <span class="pill">Hibernate/JPA (Basic)</span>
+              <span class="pill">Git/GitHub</span>
+              <span class="pill">Postman</span>
+              <span class="pill">IntelliJ IDEA</span>
+              <span class="pill">VS Code</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-title">Web / Frontend</td>
+            <td>
+              <span class="pill">HTML</span>
+              <span class="pill">CSS</span>
+              <span class="pill">Bootstrap (Basic)</span>
+              <span class="pill">Thymeleaf</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-title">Khái niệm</td>
+            <td>
+              <span class="pill">OOP</span>
+              <span class="pill">RESTful API</span>
+              <span class="pill">MVC</span>
+            </td>
+          </tr>
 
-        <!-- PROJECTS -->
-        <section class="section">
-          <h2 class="section-title"><span>Projects</span></h2>
+          <!-- Added as you requested -->
+          <tr>
+            <td class="row-title">DevOps</td>
+            <td>
+              <span class="pill">Docker</span>
+              <span class="pill">CI/CD</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-          <div class="project-item">
-            <div class="item-header">
-              <div class="item-title">Phone Store Web App (Học phần / Cá nhân)</div>
-              <div class="item-time">2024</div>
-            </div>
-            <div class="item-sub">Stack: Spring Boot, Thymeleaf, MySQL, Bootstrap, JavaScript</div>
-            <ul>
-              <li>Phát triển ứng dụng web bán điện thoại theo mô hình MVC.</li>
-              <li>Xây dựng controller xử lý nghiệp vụ sản phẩm, giỏ hàng và đơn hàng.</li>
-              <li>Thiết kế cơ sở dữ liệu quan hệ (Brand, Phone, Account, Order, OrderDetail).</li>
-              <li>Sử dụng Spring Data JPA để thao tác dữ liệu và quản lý transaction.</li>
-            </ul>
-            <p style="font-size:13px;">
-              🔗 GitHub:
-            https://github.com/duchai813/PhoneHouse
-            </p>
-          </div>
+    <!-- EXPERIENCE -->
+    <section>
+      <h2>Experience</h2>
+      <table class="cv-table">
+        <thead>
+          <tr>
+            <th style="width:18%;">Thời gian</th>
+            <th style="width:28%;">Vị trí</th>
+            <th>Mô tả</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2024 – 2025</td>
+            <td>
+              <div class="row-title">Cộng tác viên IT — Xưởng IT FPT</div>
+            </td>
+            <td>
+              <ul>
+                <li>Hỗ trợ kỹ thuật cho sinh viên và website CLB.</li>
+                <li>Tham gia chỉnh sửa và tối ưu giao diện website CLB bằng HTML, CSS, Bootstrap.</li>
+                <li>Hỗ trợ triển khai và bảo trì các tính năng cơ bản cho website nội bộ.</li>
+                <li>Tham gia workshop Java, hỗ trợ sinh viên làm quen với Spring Boot và MVC.</li>
+              </ul>
+              <div class="tags">Tags: Java · Spring Boot · MVC · MySQL · Git</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-          <div class="project-item">
-            <div class="item-header">
-              <div class="item-title">Student Management (Mini API)</div>
-              <div class="item-time">2023</div>
-            </div>
-            <div class="item-sub">Stack: Spring Boot, REST API, H2 Database, Postman</div>
-            <ul>
-              <li>Xây dựng RESTful API quản lý sinh viên (CRUD).</li>
-              <li>Áp dụng các HTTP method: GET, POST, PUT, DELETE.</li>
-              <li>Sử dụng H2 Database in-memory để test và phát triển nhanh.</li>
-              <li>Test API bằng Postman và tài liệu hóa bằng README.</li>
-            </ul>
-          </div>
-        </section>
-      </main>
+    <!-- PROJECTS -->
+    <section>
+      <h2>Projects</h2>
+      <table class="cv-table">
+        <thead>
+          <tr>
+            <th style="width:18%;">Năm</th>
+            <th style="width:30%;">Dự án</th>
+            <th>Mô tả / Kết quả</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2024</td>
+            <td>
+              <div class="row-title">Phone Store Web App (Học phần / Cá nhân)</div>
+              <div class="row-meta">Stack: Spring Boot, Thymeleaf, MySQL, Bootstrap, JavaScript</div>
+              <div class="row-meta">GitHub: <a href="https://github.com/duchai813/PhoneHouse" target="_blank" rel="noreferrer">github.com/duchai813/PhoneHouse</a></div>
+            </td>
+            <td>
+              <ul>
+                <li>Phát triển ứng dụng web bán điện thoại theo mô hình MVC.</li>
+                <li>Xây dựng controller xử lý nghiệp vụ sản phẩm, giỏ hàng và đơn hàng.</li>
+                <li>Thiết kế cơ sở dữ liệu quan hệ (Brand, Phone, Account, Order, OrderDetail).</li>
+                <li>Sử dụng Spring Data JPA để thao tác dữ liệu và quản lý transaction.</li>
+              </ul>
+            </td>
+          </tr>
 
-      <!-- RIGHT COLUMN -->
-      <aside>
-        <!-- SKILLS -->
-        <section class="section">
-          <h2 class="section-title"><span>Skills</span></h2>
+          <tr>
+            <td>2023</td>
+            <td>
+              <div class="row-title">Student Management (Mini API)</div>
+              <div class="row-meta">Stack: Spring Boot, REST API, H2 Database, Postman</div>
+            </td>
+            <td>
+              <ul>
+                <li>Xây dựng RESTful API quản lý sinh viên (CRUD).</li>
+                <li>Áp dụng các HTTP method: GET, POST, PUT, DELETE.</li>
+                <li>Sử dụng H2 Database in-memory để test và phát triển nhanh.</li>
+                <li>Test API bằng Postman và tài liệu hóa bằng README.</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-          <div class="skill-group">
-            <div class="skill-title">Ngôn ngữ lập trình</div>
-            <div class="skill-tags">
-              <span class="skill-tag">Java (Core)</span>
-              <span class="skill-tag">SQL (Basic)</span>
-              <span class="skill-tag">JavaScript (Basic)</span>
-              <span class="skill-tag">C</span>
-            </div>
-          </div>
+    <!-- EDUCATION + CERT + LANG + SOFT SKILLS -->
+    <section>
+      <h2>Additional Information</h2>
 
-          <div class="skill-group">
-            <div class="skill-title">Framework / Tools</div>
-            <div class="skill-tags">
-              <span class="skill-tag">Spring Boot (Basic)</span>
-              <span class="skill-tag">Hibernate/JPA (Basic)</span>
-              <span class="skill-tag">Git / GitHub</span>
-              <span class="skill-tag">Postman</span>
-              <span class="skill-tag">IntelliJ IDEA / VS Code</span>
-            </div>
-          </div>
+      <div class="two-col">
+        <div>
+          <div class="row-title">Education</div>
+          <div class="row-meta">FPT Polytechnic — Chuyên ngành: Công nghệ Thông tin (2024 – Nay)</div>
+          <ul>
+            <li>Dự kiến tốt nghiệp: 2026</li>
+            <li>Các môn liên quan: Lập trình Java, Cấu trúc dữ liệu &amp; giải thuật, Cơ sở dữ liệu, Web</li>
+            <li>GPA hiện tại: 3.0 / 4.0</li>
+          </ul>
+        </div>
 
-          <div class="skill-group">
-            <div class="skill-title">Web / Frontend</div>
-            <div class="skill-tags">
-              <span class="skill-tag">HTML</span>
-              <span class="skill-tag">CSS</span>
-              <span class="skill-tag">Bootstrap (Basic)</span>
-              <span class="skill-tag">Thymeleaf</span>
-            </div>
-          </div>
-
-          <div class="skill-group">
-            <div class="skill-title">Khái niệm</div>
-            <div class="skill-tags">
-              <span class="skill-tag">OOP</span>
-              <span class="skill-tag">RESTful API</span>
-              <span class="skill-tag">MVC</span>
-            </div>
-          </div>
-        </section>
-
-        <!-- EDUCATION -->
-        <section class="section">
-          <h2 class="section-title"><span>Education</span></h2>
-          <div class="edu-item">
-            <div class="item-header">
-              <div class="item-title">FPT POLYTECHNIC</div>
-              <div class="item-time">2024 – Nay</div>
-            </div>
-            <div class="item-sub">Chuyên ngành: Công nghệ Thông tin</div>
-            <ul>
-              <li>Dự kiến tốt nghiệp: 2026.</li>
-              <li>Các môn liên quan: Lập trình Java, Cấu trúc dữ liệu & giải thuật, Cơ sở dữ liệu, Web.</li>
-              <li>GPA hiện tại: 3.0 / 4.0.</li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- CERTIFICATES -->
-        <section class="section">
-          <h2 class="section-title"><span>Certificates</span></h2>
-          <ul style="font-size:13px;">
+        <div>
+          <div class="row-title">Certificates</div>
+          <ul>
             <li>Sinh viên giỏi ngành Phát triển Phần mềm</li>
           </ul>
-        </section>
 
-        <!-- LANGUAGES -->
-        <section class="section">
-          <h2 class="section-title"><span>Languages</span></h2>
-          <div class="lang-row">
-            <span>Vietnamese</span>
-            <span>Native</span>
-          </div>
-          <div class="lang-row">
-            <span>English</span>
-            <span>Intermediate – IELTS in progress (target 6.5)</span>
-          </div>
-        </section>
+          <div style="height:10px"></div>
 
-        <!-- SOFT SKILLS -->
-        <section class="section">
-          <h2 class="section-title"><span>Soft Skills & Activities</span></h2>
-          <ul class="soft-list" style="font-size:13px;">
-            <li>Làm việc nhóm trong các đồ án môn học, phối hợp phân công nhiệm vụ.</li>
-            <li>Tự học công nghệ mới qua tài liệu online, blog và video.</li>
-            <li>Tham gia CLB IT tại trường.</li>
+          <div class="row-title">Languages</div>
+          <ul>
+            <li>Vietnamese: Native</li>
+            <li>English: Intermediate — IELTS in progress (target 6.5)</li>
           </ul>
-        </section>
-      </aside>
-    </div>
-  </div>
+        </div>
+      </div>
+
+      <div style="height:12px"></div>
+
+      <div class="row-title">Soft Skills &amp; Activities</div>
+      <ul>
+        <li>Làm việc nhóm trong các đồ án môn học, phối hợp phân công nhiệm vụ.</li>
+        <li>Tự học công nghệ mới qua tài liệu online, blog và video.</li>
+        <li>Tham gia CLB IT tại trường.</li>
+      </ul>
+    </section>
+
+  </main>
 </body>
 </html>
-
